@@ -4,6 +4,7 @@
     import type { LayoutData } from './$types';
     import Navbar from '$lib/components/Navbar.svelte';
     import DrawerOpenButton from '$lib/components/DrawerOpenButton.svelte';
+    import DrawerCloseButton from '$lib/components/DrawerCloseButton.svelte';
 
     let { data, children }: { data: LayoutData; children: Snippet } = $props();
 </script>
@@ -34,11 +35,17 @@
             aria-label="close sidebar"
             class="drawer-overlay"
         ></label>
-        <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+        <div class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
             <!-- Sidebar content here -->
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-            <a href="/greet">Greet</a>
-        </ul>
+            <div class="flex flex-row justify-between border-b-2 my-2">
+                 <span class="text-3xl font-bold my-2">Navigation</span>
+                 <DrawerCloseButton />
+            </div>
+             <nav class="flex flex-col gap-4 [&>a]:btn [&>a]:btn-ghost [&>a]:btn-lg [&>a]:w-full">
+                 <a href="/">Home</a>
+                 <a href="/about">About</a>
+                 <a href="/greet">Greet</a>
+            </nav>
+        </div>
     </div>
 </div>
